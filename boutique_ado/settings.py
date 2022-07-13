@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'products',
     'bag',
     'checkout',
+    'profiles',
 
     # Other
     'crispy_forms',
@@ -63,6 +64,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'boutique_ado.urls'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 TEMPLATES = [
     {
@@ -88,6 +91,8 @@ TEMPLATES = [
         },
     },
 ]
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 AUTHENTICATION_BACKENDS = [
     
@@ -121,7 +126,7 @@ WSGI_APPLICATION = 'boutique_ado.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -182,3 +187,5 @@ STANDARD_DELIVERY_PERCENTAGE = 10
 STRIPE_CURRENCY = 'gbp'
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', 'pk_test_51LJFjoGWRsXFTFWwLYq2yqOTpQ52ZH3djhjtPW0Q2NgGM6qqARwlj1su0CdXCgG0FkWsWfopTAILVfgXM1TyEIlx00RnzLb3Hl')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', 'sk_test_51LJFjoGWRsXFTFWw6bpeuN2L1NwSRzxNEEUbj8cZSQdXA4VuoMUfKNNjleIDNljALHh4gwsorChCyNw0lCtpy4Ji00ThWzlvDh')
+STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
+DEFAULT_FROM_EMAIL = 'boutiqueado@example.com'
